@@ -3,163 +3,322 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>دليل المصادر الأكاديمية المحدث</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Amiri:wght@400;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+<title>Academic Hub | المركز الأكاديمي</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --blue: #1a4f8a;
-    --blue-mid: #2563a8;
-    --blue-light: #deeaf8;
-    --white: #ffffff;
-    --text: #1c1f2a;
-    --text-muted: #6b7280;
-    --slate-border: #e2e4ea;
-    --radius: 14px;
+    --primary: #1a4f8a;
+    --secondary: #c8873a;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Amiri', serif; background: #f7f8fc; color: var(--text); line-height: 1.6; }
-  body.ltr { font-family: 'DM Sans', sans-serif; direction: ltr; }
-
-  /* Header Section */
-  .site-header {
-    background: linear-gradient(135deg, #0f3460 0%, #1a4f8a 100%);
-    padding: 3rem 1rem 5rem;
-    color: white;
-    text-align: center;
-    clip-path: ellipse(150% 100% at 50% 0%);
-  }
-
-  .hero-title { font-size: 2.5rem; margin-bottom: 1rem; }
-  .search-wrap { max-width: 600px; margin: 2rem auto; position: relative; }
-  .search-input {
-    width: 100%; padding: 15px 25px; border-radius: 30px; border: none;
-    font-size: 1rem; outline: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  }
-
-  /* Main Content */
-  .main { max-width: 1100px; margin: -3rem auto 4rem; padding: 0 1.5rem; }
   
-  .tabs-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem; justify-content: center; }
-  .tab-btn {
-    padding: 10px 20px; border-radius: 25px; border: 1px solid var(--slate-border);
-    background: white; cursor: pointer; transition: 0.3s; font-family: inherit;
-  }
-  .tab-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
-
-  .cards-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+  body { 
+    font-family: 'Amiri', serif; 
+    background-color: var(--bg); 
+    color: var(--text-main);
+    transition: all 0.3s ease;
   }
 
-  .res-card {
-    background: white; border-radius: var(--radius); padding: 1.5rem;
-    border: 1px solid var(--slate-border); transition: 0.3s;
-    display: flex; flex-direction: column; text-decoration: none; color: inherit;
+  body.en-mode { 
+    font-family: 'Inter', sans-serif; 
+    direction: ltr; 
   }
-  .res-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-color: var(--blue); }
 
-  .card-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
-  .card-name { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--blue); }
-  .card-desc { font-size: 0.95rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 1.5rem; }
-
-  .visit-btn {
-    display: inline-block; text-align: center; background: var(--blue); color: white;
-    padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s;
+  /* Header */
+  header {
+    background: linear-gradient(135deg, #0f172a 0%, #1a4f8a 100%);
+    color: white;
+    padding: 4rem 1rem;
+    text-align: center;
+    position: relative;
   }
-  .visit-btn:hover { background: #0f3460; }
 
-  .lang-toggle {
-    position: absolute; top: 20px; left: 20px;
-    background: rgba(255,255,255,0.2); color: white; border: 1px solid white;
-    padding: 5px 15px; border-radius: 20px; cursor: pointer;
+  .lang-switcher {
+    position: absolute;
+    top: 20px;
+    left: 20px;
   }
+  body.en-mode .lang-switcher { left: auto; right: 20px; }
+
+  .btn-lang {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .search-container {
+    max-width: 600px;
+    margin: 2rem auto -2rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    font-size: 1rem;
+    outline: none;
+  }
+
+  /* Filters */
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 4rem 0 2rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  /* Grid */
+  .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  }
+
+  .card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .card-title { font-size: 1.3rem; color: var(--primary); margin-bottom: 0.5rem; }
+  .card-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+
+  .card-tags { display: flex; gap: 5px; margin-bottom: 1rem; flex-wrap: wrap; }
+  .tag { 
+    font-size: 0.75rem; 
+    padding: 3px 8px; 
+    background: #f1f5f9; 
+    border-radius: 5px;
+    color: var(--primary);
+  }
+
+  .visit-link {
+    display: block;
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+
+  .visit-link:hover { background: #0f172a; }
+
+  footer { text-align: center; padding: 3rem; color: var(--text-muted); }
 </style>
 </head>
 <body>
 
-<button class="lang-toggle" onclick="toggleLang()" id="lang-btn">English</button>
-
-<header class="site-header">
-  <h1 class="hero-title" id="h-title">دليل المصادر الأكاديمية</h1>
-  <p id="h-sub">قواعد بيانات وأدوات موثوقة للباحثين والطلاب</p>
-  <div class="search-wrap">
-    <input class="search-input" id="search-input" placeholder="ابحث عن مصدر..." oninput="filterResources()"/>
+<header>
+  <div class="lang-switcher">
+    <button class="btn-lang" onclick="toggleLanguage()" id="langBtn">English</button>
+  </div>
+  <h1 id="mainTitle">دليل المصادر الأكاديمية</h1>
+  <p id="mainSub">بوابة المحتوى الموثوق للطلاب والمحاضرين</p>
+  
+  <div class="search-container">
+    <input type="text" class="search-input" id="searchInput" placeholder="ابحث عن مصدر أو تخصص..." oninput="filterData()">
   </div>
 </header>
 
-<main class="main">
-  <div class="tabs-row" id="tabs-row">
-    <button class="tab-btn active" data-cat="all" onclick="setTab(this)">الكل</button>
-    <button class="tab-btn" data-cat="students" onclick="setTab(this)">طلاب</button>
-    <button class="tab-btn" data-cat="researchers" onclick="setTab(this)">باحثون</button>
+<div class="container">
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all" onclick="setFilter(this)" id="f-all">الكل</button>
+    <button class="filter-btn" data-filter="student" onclick="setFilter(this)" id="f-student">للطلاب</button>
+    <button class="filter-btn" data-filter="lecturer" onclick="setFilter(this)" id="f-lecturer">للمحاضرين</button>
   </div>
 
-  <div class="cards-grid" id="cards-grid">
+  <div class="grid" id="resourceGrid">
     </div>
-</main>
+</div>
+
+<footer id="footerText">
+  &copy; 2026 جميع الحقوق محفوظة - المركز الأكاديمي للبحث
+</footer>
 
 <script>
-// البيانات المحدثة مع إضافة بريتانيكا
-const DATA = [
-  { id: 1, en: { name: "Google Scholar", desc: "Search scholarly literature across many disciplines." }, ar: { name: "جوجل سكولار", desc: "البحث في الأبحاث الأكاديمية والمقالات العلمية." }, icon: "🎓", cat: ["students", "researchers"], url: "https://scholar.google.com" },
-  { id: 2, en: { name: "JSTOR", desc: "A digital library of academic journals and books." }, ar: { name: "جيستور", desc: "مكتبة رقمية للمجلات الأكاديمية والكتب." }, icon: "📚", cat: ["researchers"], url: "https://www.jstor.org" },
-  { id: 3, en: { name: "Britannica", desc: "Trusted online encyclopedia with verified information." }, ar: { name: "موسوعة بريتانيكا", desc: "موسوعة إلكترونية موثوقة تحتوي على معلومات محققة." }, icon: "🌍", cat: ["students", "researchers"], url: "https://www.britannica.com" },
-  { id: 4, en: { name: "PubMed", desc: "Database for biomedical and life sciences literature." }, ar: { name: "بابميد", desc: "قاعدة بيانات لأبحاث الطب وعلوم الحياة." }, icon: "🧬", cat: ["researchers"], url: "https://pubmed.ncbi.nlm.nih.gov" },
-  { id: 5, en: { name: "World Bank Data", desc: "Free access to global development data." }, ar: { name: "بيانات البنك الدولي", desc: "وصول مجاني لبيانات التنمية العالمية." }, icon: "📊", cat: ["researchers"], url: "https://data.worldbank.org" }
+const resources = [
+  {
+    id: 1,
+    icon: "🌍",
+    ar: { name: "موسوعة بريتانيكا", desc: "أقدم موسوعة في العالم، توفر معلومات محققة وشاملة لجميع التخصصات والمشاريع." },
+    en: { name: "Britannica", desc: "The world's most trusted encyclopedia, providing verified info for all projects." },
+    url: "https://www.britannica.com",
+    tags: ["student", "lecturer"]
+  },
+  {
+    id: 2,
+    icon: "🔬",
+    ar: { name: "ساينس دايركت", desc: "قاعدة بيانات ضخمة للأبحاث العلمية والتقنية، مثالية للمشاريع المتقدمة." },
+    en: { name: "ScienceDirect", desc: "Peer-reviewed scientific, technical, and medical research papers." },
+    url: "https://www.sciencedirect.com",
+    tags: ["researcher", "lecturer"]
+  },
+  {
+    id: 3,
+    icon: "📖",
+    ar: { name: "إيريك (ERIC)", desc: "أكبر مكتبة رقمية للأبحاث التربوية، كنز حقيقي للمحاضرين والمعلمين." },
+    en: { name: "ERIC", desc: "The world's largest digital library of education research and information." },
+    url: "https://eric.ed.gov",
+    tags: ["lecturer"]
+  },
+  {
+    id: 4,
+    icon: "📊",
+    ar: { name: "بيانات البنك الدولي", desc: "إحصائيات وبيانات رسمية دقيقة لتدعيم عروضك التقديمية بالأرقام." },
+    en: { name: "World Bank Data", desc: "Free and open access to global development data and statistics." },
+    url: "https://data.worldbank.org",
+    tags: ["student", "researcher"]
+  },
+  {
+    id: 5,
+    icon: "🎓",
+    ar: { name: "باحث علمي جوجل", desc: "المحرك الأشهر للبحث عن المقالات والرسائل العلمية الموثقة." },
+    en: { name: "Google Scholar", desc: "Search for scholarly literature across many disciplines and sources." },
+    url: "https://scholar.google.com",
+    tags: ["student", "lecturer"]
+  },
+  {
+    id: 6,
+    icon: "🏛️",
+    ar: { name: "مكتبة هارفارد", desc: "مجموعة من الأدوات والمراجع الرقمية المتاحة من واحدة من أعرق الجامعات." },
+    en: { name: "Harvard Library", desc: "Digital resources and tools from one of the world's leading universities." },
+    url: "https://library.harvard.edu",
+    tags: ["lecturer", "researcher"]
+  }
 ];
 
 let currentLang = 'ar';
-let currentCat = 'all';
+let currentFilter = 'all';
 
-function toggleLang() {
+const uiStrings = {
+  ar: {
+    title: "دليل المصادر الأكاديمية",
+    sub: "بوابة المحتوى الموثوق للطلاب والمحاضرين",
+    placeholder: "ابحث عن مصدر أو تخصص...",
+    fAll: "الكل",
+    fStudent: "للطلاب",
+    fLecturer: "للمحاضرين",
+    visit: "زيارة المصدر",
+    footer: "&copy; 2026 جميع الحقوق محفوظة - المركز الأكاديمي للبحث"
+  },
+  en: {
+    title: "Academic Resource Hub",
+    sub: "Trusted content for students and lecturers",
+    placeholder: "Search for resources or subjects...",
+    fAll: "All",
+    fStudent: "For Students",
+    fLecturer: "For Lecturers",
+    visit: "Visit Source",
+    footer: "&copy; 2026 All Rights Reserved - Academic Research Hub"
+  }
+};
+
+function toggleLanguage() {
   currentLang = currentLang === 'ar' ? 'en' : 'ar';
-  document.body.className = currentLang === 'en' ? 'ltr' : '';
-  document.getElementById('lang-btn').textContent = currentLang === 'ar' ? 'English' : 'العربية';
-  document.getElementById('h-title').textContent = currentLang === 'ar' ? 'دليل المصادر الأكاديمية' : 'Academic Resources Directory';
-  document.getElementById('search-input').placeholder = currentLang === 'ar' ? 'ابحث عن مصدر...' : 'Search resources...';
+  document.body.classList.toggle('en-mode');
+  
+  const btn = document.getElementById('langBtn');
+  btn.textContent = currentLang === 'ar' ? 'English' : 'العربية';
+  
+  updateUI();
   render();
 }
 
-function setTab(btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+function updateUI() {
+  const s = uiStrings[currentLang];
+  document.getElementById('mainTitle').textContent = s.title;
+  document.getElementById('mainSub').textContent = s.sub;
+  document.getElementById('searchInput').placeholder = s.placeholder;
+  document.getElementById('f-all').textContent = s.fAll;
+  document.getElementById('f-student').textContent = s.fStudent;
+  document.getElementById('f-lecturer').textContent = s.fLecturer;
+  document.getElementById('footerText').innerHTML = s.footer;
+}
+
+function setFilter(btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  currentCat = btn.dataset.cat;
+  currentFilter = btn.dataset.filter;
   render();
 }
 
-function filterResources() {
+function filterData() {
   render();
 }
 
 function render() {
-  const query = document.getElementById('search-input').value.toLowerCase();
-  const grid = document.getElementById('cards-grid');
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  const grid = document.getElementById('resourceGrid');
   grid.innerHTML = '';
 
-  const filtered = DATA.filter(item => {
-    const content = (item[currentLang].name + item[currentLang].desc).toLowerCase();
-    const matchCat = currentCat === 'all' || item.cat.includes(currentCat);
-    const matchSearch = content.includes(query);
-    return matchCat && matchSearch;
+  const filtered = resources.filter(res => {
+    const matchFilter = currentFilter === 'all' || res.tags.includes(currentFilter);
+    const matchSearch = res[currentLang].name.toLowerCase().includes(query) || 
+                        res[currentLang].desc.toLowerCase().includes(query);
+    return matchFilter && matchSearch;
   });
 
-  filtered.forEach(item => {
+  filtered.forEach(res => {
     const card = document.createElement('div');
-    card.className = 'res-card';
+    card.className = 'card';
     card.innerHTML = `
-      <div class="card-icon" style="background:#f0f6ff">${item.icon}</div>
-      <div class="card-name">${item[currentLang].name}</div>
-      <p class="card-desc">${item[currentLang].desc}</p>
-      <a href="${item.url}" target="_blank" rel="noopener" class="visit-btn">
-        ${currentLang === 'ar' ? 'زيارة الموقع' : 'Visit Website'}
-      </a>
+      <div class="card-icon">${res.icon}</div>
+      <div class="card-title">${res[currentLang].name}</div>
+      <div class="card-tags">
+        ${res.tags.map(t => `<span class="tag">${t === 'student' ? (currentLang === 'ar' ? 'طالب' : 'Student') : (currentLang === 'ar' ? 'محاضر' : 'Lecturer')}</span>`).join('')}
+      </div>
+      <p class="card-desc">${res[currentLang].desc}</p>
+      <a href="${res.url}" target="_blank" rel="noopener" class="visit-link">${uiStrings[currentLang].visit}</a>
     `;
     grid.appendChild(card);
   });
 }
 
-// التشغيل لأول مرة
+// Initial Render
 render();
 </script>
 </body>
